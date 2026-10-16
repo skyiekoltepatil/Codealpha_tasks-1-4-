@@ -1,16 +1,26 @@
+import os
 from flask import Flask, render_template, Response
 import cv2
 from ultralytics import YOLO
 
 app = Flask(__name__)
 
-# Load a much smarter YOLOv8 model for higher accuracy (YOLOv8 Medium)
-model = YOLO('yolov8m.pt')
+# Prefer lightweight nano model for faster inference, or use medium model if available
+weights = 'yolov8n.pt' if os.path.exists('yolov8n.pt') else ('yolov8m.pt' if os.path.exists('yolov8m.pt') else 'yolov8n.pt')
+model = YOLO(weights)
 
 def generate_frames():
-    # Using webcam (0) for real-time tracking
-    video_path = 0
-    cap = cv2.VideoCapture(video_path)
+    # Attempt webcam first, fallback to sample video if webcam is unavailable
+    video_source = 0
+    cap = cv2.VideoCapture(video_source)
+    
+    # Check if webcam can be read
+    is_working, _ = cap.read() if cap.isOpened() else (False, None)
+    if not is_working:
+        sample_path = "sample_video.mp4"
+        if os.path.exists(sample_path):
+            print(f"Webcam not accessible, streaming from {sample_path}")
+            cap = cv2.VideoCapture(sample_path)
     
     while cap.isOpened():
         success, frame = cap.read()
