@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Music Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #000000;
+            background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2564&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        .card { 
+            background: rgba(30, 30, 32, 0.85); 
+            padding: 50px 40px; 
+            border-radius: 16px; 
+            text-align: center; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1); 
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            width: 90%;
+            max-width: 700px;
+        }
+        h1 { margin-top: 0; font-weight: 600; font-size: 24px; color: #ffffff; margin-bottom: 15px;}
+        p { color: #98989d; font-size: 15px; line-height: 1.5; margin-bottom: 30px;}
+        .btn { 
+            background: #0a84ff; 
+            color: white; 
+            padding: 14px 28px; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            display: inline-block; 
+            transition: transform 0.2s, filter 0.2s; 
+            font-size: 15px;
+        }
+        .btn:hover { 
+            filter: brightness(1.2);
+            transform: scale(1.02);
+        }
+        .icon {
+            font-size: 48px;
+            color: #0a84ff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">
+            <i class="fa-solid fa-music"></i>
+        </div>
+        <h1>AI Music Generated!</h1>
+        <p>The Deep Learning LSTM model has successfully generated a brand new piece of music based on classical Bach sequences.</p>
+        
+        <!-- Live Sheet Music Player -->
+        <div style="margin-bottom: 30px;">
+            <midi-player src="/play_midi" sound-font visualizer="#myVisualizer" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"></midi-player>
+            <midi-visualizer type="staff" id="myVisualizer" src="/play_midi" style="width: 100%; height: 250px; background: #f4f4f5; border-radius: 8px; margin-top: 15px; display: block; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"></midi-visualizer>
+        </div>
+
+        <a href="/download" class="btn"><i class="fa-solid fa-download"></i> Download Track</a>
+    </div>
+
+    <!-- Web MIDI Player Scripts (Magenta) -->
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+</body>
+</html>
