@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate - Dark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+
+    <main class="bento-container">
+        <header class="bento-header bento-card">
+            <h1 class="brand-text">Fluent.</h1>
+            <p>Real-time semantic translation engine.</p>
+        </header>
+
+        <div class="bento-grid">
+            <!-- Source Section -->
+            <div class="bento-card input-card">
+                <div class="card-header">
+                    <div class="select-pill">
+                        <select id="sourceLang">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="ja">Japanese</option>
+                            <option value="zh">Chinese</option>
+                            <option value="hi">Hindi</option>
+                            <option value="ar">Arabic</option>
+                        </select>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                </div>
+                <textarea id="inputText" placeholder="Start typing..."></textarea>
+                <div class="card-footer">
+                    <span id="charCount" class="badge">0/500</span>
+                    <button class="icon-action" id="clearBtn"><i class="fa-solid fa-eraser"></i></button>
+                </div>
+            </div>
+
+            <!-- Middle Actions -->
+            <div class="action-column">
+                <button id="swapBtn" class="bento-btn circular">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </button>
+                <button id="translateBtn" class="bento-btn primary-btn">
+                    <span class="btn-text">Translate</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="loader hide"></div>
+                </button>
+            </div>
+
+            <!-- Target Section -->
+            <div class="bento-card output-card">
+                <div class="card-header">
+                    <div class="select-pill">
+                        <select id="targetLang">
+                            <option value="es">Spanish</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="ja">Japanese</option>
+                            <option value="zh">Chinese</option>
+                            <option value="hi">Hindi</option>
+                            <option value="ar">Arabic</option>
+                        </select>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                </div>
+                <textarea id="outputText" placeholder="Translation appears here..." readonly></textarea>
+                <div class="card-footer right-align">
+                    <button class="icon-action" id="copyBtn"><i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
