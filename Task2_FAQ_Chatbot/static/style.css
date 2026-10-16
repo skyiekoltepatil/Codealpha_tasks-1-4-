@@ -1,0 +1,267 @@
+:root {
+    --mac-bg: rgb(30, 30, 32); /* Opaque dark background */
+    --mac-border: rgba(255, 255, 255, 0.15); /* Thin white border for dark glass */
+    --mac-titlebar: rgb(45, 45, 45);
+    --bot-msg: #2c2c2e; /* iOS dark mode gray bubble */
+    --user-msg: #0a84ff; /* iOS dark mode blue */
+    --text-primary: #ffffff;
+    --text-muted: #98989d;
+    --input-bg: rgba(44, 44, 46, 0.8);
+    --input-border: rgba(255, 255, 255, 0.1);
+    --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-apple);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    /* Premium ultra-dark abstract or sleek macOS dark wallpaper */
+    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.mac-window {
+    width: 100%;
+    max-width: 600px;
+    height: 85vh;
+    max-height: 700px;
+    background-color: var(--mac-bg);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px var(--mac-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mac-titlebar {
+    height: 52px;
+    background: linear-gradient(to bottom, #3a3a3c, #2c2c2e);
+    border-bottom: 1px solid #1c1c1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    user-select: none;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+    width: 60px;
+}
+
+.light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.close {
+    background-color: #ff5f56;
+    border: 1px solid #e0443e;
+}
+
+.minimize {
+    background-color: #ffbd2e;
+    border: 1px solid #dea123;
+}
+
+.maximize {
+    background-color: #27c93f;
+    border: 1px solid #1aab29;
+}
+
+.window-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e5e5ea;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mac-actions {
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+    color: #8e8e93;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: transparent;
+}
+
+.message-wrapper {
+    display: flex;
+    gap: 12px;
+    max-width: 80%;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #48484a, #2c2c2e);
+    color: #e5e5ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.message {
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.4;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* iMessage dark style bubbles */
+.bot-message .message {
+    background-color: var(--bot-msg);
+    color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.user-message .message {
+    background-color: var(--user-msg);
+    color: var(--text-primary);
+    border-bottom-right-radius: 4px;
+}
+
+.suggestions-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 12px 0 8px 0;
+    font-weight: 500;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    color: var(--user-msg);
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s;
+}
+
+.chip:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.chip:active {
+    background: rgba(255,255,255,0.15);
+}
+
+.chat-input-area {
+    padding: 16px;
+    background-color: rgb(30, 30, 32);
+    border-top: 1px solid #1c1c1e;
+}
+
+form {
+    display: flex;
+    gap: 12px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    padding: 6px 6px 6px 16px;
+    border-radius: 24px;
+    align-items: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+input::placeholder {
+    color: #636366;
+}
+
+button[type="submit"] {
+    background: var(--user-msg);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+button[type="submit"]:hover {
+    filter: brightness(1.2);
+}
+
+/* Typing Indicator */
+.typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    padding: 0 12px !important;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-muted);
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}

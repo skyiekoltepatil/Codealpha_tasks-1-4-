@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Assistant - Mac Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="mac-window">
+        <header class="mac-titlebar">
+            <div class="traffic-lights">
+                <div class="light close"></div>
+                <div class="light minimize"></div>
+                <div class="light maximize"></div>
+            </div>
+            <div class="window-title">
+                <i class="fa-brands fa-apple"></i> FAQ Assistant
+            </div>
+            <div class="mac-actions">
+            </div>
+        </header>
+        
+        <main class="chat-box" id="chatBox">
+            <div class="message-wrapper bot-message">
+                <div class="avatar-sm"><i class="fa-solid fa-robot"></i></div>
+                <div class="message">
+                    <p>Hello! I'm the AI FAQ Assistant. How can I help you today?</p>
+                    <p class="suggestions-title">You can ask me about:</p>
+                    <div class="chips">
+                        <span class="chip" onclick="setInput('What is the return policy?')">Return Policy</span>
+                        <span class="chip" onclick="setInput('How do I track my order?')">Order Tracking</span>
+                        <span class="chip" onclick="setInput('Do you ship internationally?')">Shipping</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="chat-input-area">
+            <form id="chatForm">
+                <input type="text" id="userInput" placeholder="iMessage..." autocomplete="off">
+                <button type="submit" id="sendBtn">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const chatBox = document.getElementById('chatBox');
+
+        function setInput(text) {
+            userInput.value = text;
+            chatForm.dispatchEvent(new Event('submit'));
+        }
+
+        function appendMessage(text, isUser = false) {
+            const wrapper = document.createElement('div');
+            wrapper.className = `message-wrapper ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            let avatarHtml = '';
+            if (!isUser) {
+                avatarHtml = `<div class="avatar-sm"><i class="fa-solid fa-robot"></i></div>`;
+            }
+
+            wrapper.innerHTML = `
+                ${avatarHtml}
+                <div class="message">
+                    <p>${text}</p>
+                </div>
+            `;
+            
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return wrapper;
+        }
+
+        function addTypingIndicator() {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'message-wrapper bot-message typing-indicator-wrapper';
+            wrapper.id = 'typingIndicator';
+            
+            wrapper.innerHTML = `
+                <div class="avatar-sm"><i class="fa-solid fa-robot"></i></div>
+                <div class="message typing">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            `;
+            
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            appendMessage(text, true);
+            userInput.value = '';
+            
+            addTypingIndicator();
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+                const data = await response.json();
+                
+                removeTypingIndicator();
+                appendMessage(data.answer);
+            } catch (error) {
+                removeTypingIndicator();
+                appendMessage('Sorry, I encountered a network error.');
+            }
+        });
+    </script>
+</body>
+</html>
