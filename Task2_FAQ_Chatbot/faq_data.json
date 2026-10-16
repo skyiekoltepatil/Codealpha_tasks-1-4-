@@ -1,0 +1,30 @@
+[
+  {
+    "question": "What is the return policy?",
+    "answer": "You can return most items within 30 days of receipt for a full refund."
+  },
+  {
+    "question": "How do I track my order?",
+    "answer": "Go to 'My Orders' in your account dashboard and click on the tracking link for the respective order."
+  },
+  {
+    "question": "Do you ship internationally?",
+    "answer": "Yes, we ship to over 100 countries. International shipping rates and times apply."
+  },
+  {
+    "question": "How can I contact customer support?",
+    "answer": "You can reach our 24/7 customer support via the live chat widget on our website or by emailing support@example.com."
+  },
+  {
+    "question": "What payment methods do you accept?",
+    "answer": "We accept Visa, MasterCard, American Express, PayPal, and Apple Pay."
+  },
+  {
+    "question": "How do I reset my password?",
+    "answer": "Click on 'Forgot Password' on the login page and follow the instructions sent to your email."
+  },
+  {
+    "question": "Can I cancel my order?",
+    "answer": "Orders can be cancelled within 1 hour of placement. Please visit 'My Orders' to cancel."
+  }
+]
