@@ -1,0 +1,23 @@
+# Core Web Framework
+Flask>=2.3.0
+Werkzeug>=2.3.0
+
+# Task 2: AI FAQ Chatbot
+nltk>=3.8.1
+scikit-learn>=1.3.0
+numpy>=1.24.0
+
+# Task 3: Music Generation with AI
+music21>=9.1.0
+tensorflow>=2.13.0
+midi2audio>=0.1.1
+
+# Task 4: Real-time Object Detection and Tracking
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Development & Code Quality
+pytest>=7.4.0
+flake8>=6.1.0
