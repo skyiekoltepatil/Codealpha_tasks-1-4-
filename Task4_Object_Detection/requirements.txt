@@ -1,0 +1,6 @@
+Flask>=2.3.0
+Werkzeug>=2.3.0
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+torch>=2.0.0
+torchvision>=0.15.0
