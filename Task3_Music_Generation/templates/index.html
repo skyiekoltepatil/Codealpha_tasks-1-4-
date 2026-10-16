@@ -52,6 +52,40 @@
             color: #0a84ff;
             margin-bottom: 20px;
         }
+        .waveform {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+        .wave-bar {
+            width: 4px;
+            background: #0a84ff;
+            border-radius: 2px;
+            animation: pulse 1.2s ease-in-out infinite alternate;
+        }
+        .wave-bar:nth-child(1) { height: 10px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(2) { height: 20px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(3) { height: 28px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 16px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(5) { height: 24px; animation-delay: 0.25s; }
+        @keyframes pulse {
+            0% { transform: scaleY(0.4); opacity: 0.5; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(10, 132, 255, 0.15);
+            color: #5ac8fa;
+            border: 1px solid rgba(10, 132, 255, 0.3);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 12px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +93,14 @@
         <div class="icon">
             <i class="fa-solid fa-music"></i>
         </div>
+        <div class="waveform">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+        <span class="badge">LSTM Deep Learning Model</span>
         <h1>AI Music Generated!</h1>
         <p>The Deep Learning LSTM model has successfully generated a brand new piece of music based on classical Bach sequences.</p>
         
