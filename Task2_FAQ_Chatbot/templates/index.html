@@ -19,6 +19,9 @@
                 <i class="fa-brands fa-apple"></i> FAQ Assistant
             </div>
             <div class="mac-actions">
+                <button type="button" class="action-btn" id="clearChatBtn" onclick="clearChat()" title="Clear conversation">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
             </div>
         </header>
         
@@ -32,6 +35,9 @@
                         <span class="chip" onclick="setInput('What is the return policy?')">Return Policy</span>
                         <span class="chip" onclick="setInput('How do I track my order?')">Order Tracking</span>
                         <span class="chip" onclick="setInput('Do you ship internationally?')">Shipping</span>
+                        <span class="chip" onclick="setInput('What payment methods do you accept?')">Payment Methods</span>
+                        <span class="chip" onclick="setInput('How do I reset my password?')">Reset Password</span>
+                        <span class="chip" onclick="setInput('Can I cancel my order?')">Cancel Order</span>
                     </div>
                 </div>
             </div>
@@ -55,6 +61,27 @@
         function setInput(text) {
             userInput.value = text;
             chatForm.dispatchEvent(new Event('submit'));
+        }
+
+        function clearChat() {
+            chatBox.innerHTML = `
+                <div class="message-wrapper bot-message">
+                    <div class="avatar-sm"><i class="fa-solid fa-robot"></i></div>
+                    <div class="message">
+                        <p>Hello! I'm the AI FAQ Assistant. How can I help you today?</p>
+                        <p class="suggestions-title">You can ask me about:</p>
+                        <div class="chips">
+                            <span class="chip" onclick="setInput('What is the return policy?')">Return Policy</span>
+                            <span class="chip" onclick="setInput('How do I track my order?')">Order Tracking</span>
+                            <span class="chip" onclick="setInput('Do you ship internationally?')">Shipping</span>
+                            <span class="chip" onclick="setInput('What payment methods do you accept?')">Payment Methods</span>
+                            <span class="chip" onclick="setInput('How do I reset my password?')">Reset Password</span>
+                            <span class="chip" onclick="setInput('Can I cancel my order?')">Cancel Order</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            userInput.value = '';
         }
 
         function appendMessage(text, isUser = false) {
