@@ -47,10 +47,16 @@ def preprocess(text):
     text = text.lower()
     # Remove punctuation
     text = text.translate(str.maketrans('', '', string.punctuation))
-    # Tokenize
-    tokens = nltk.word_tokenize(text)
-    # Lemmatize
-    tokens = [lemmatizer.lemmatize(word) for word in tokens]
+    # Tokenize with fallback
+    try:
+        tokens = nltk.word_tokenize(text)
+    except Exception:
+        tokens = text.split()
+    # Lemmatize with fallback
+    try:
+        tokens = [lemmatizer.lemmatize(word) for word in tokens]
+    except Exception:
+        pass
     return ' '.join(tokens)
 
 # Preprocess all FAQ questions
