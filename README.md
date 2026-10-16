@@ -1,66 +1,105 @@
 # CodeAlpha Internship Projects
 
-This repository contains the completed tasks for the CodeAlpha Artificial Intelligence & Web Development internship. The project spans four distinct AI and software engineering tasks, all designed with a consistent, premium, dark-mode macOS aesthetic.
+[![CI](https://github.com/skyiekoltepatil/Codealpha_tasks-1-4-/actions/workflows/ci.yml/badge.svg)](https://github.com/skyiekoltepatil/Codealpha_tasks-1-4-/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![Status: Completed](https://img.shields.io/badge/Status-Completed-success.svg)]()
 
-## 🚀 Tasks Overview
+This repository contains the complete implementation of the four internship tasks for the **CodeAlpha Artificial Intelligence & Web Development Internship**. Each project is crafted with high-performance architectures and a cohesive macOS dark-mode aesthetic.
 
-### Task 1: Language Translation Tool
-A sleek web-based translation interface built using Vanilla HTML, CSS, and JavaScript. 
-- **Features:** Instantly translates text between multiple languages using the Google Translate API.
-- **UI:** Features a frosted glass (glassmorphism) design with a dark mode Mac-style window wrapper.
-- **Tech Stack:** HTML5, CSS3, JavaScript.
+---
+
+## 🗂️ Tasks Matrix
+
+| Task | Title | Tech Stack | Status | Quick Link |
+| :--- | :--- | :--- | :---: | :--- |
+| **Task 1** | [Language Translation Tool](Task1_Language_Translation_Tool/) | HTML5, CSS3, ES6 JavaScript, Google Translate API | ✅ Completed | [View Task 1 Guide](Task1_Language_Translation_Tool/README.md) |
+| **Task 2** | [AI FAQ Chatbot](Task2_FAQ_Chatbot/) | Python, Flask, NLTK, Scikit-Learn | ✅ Completed | [View Task 2 Guide](Task2_FAQ_Chatbot/README.md) |
+| **Task 3** | [Music Generation with AI](Task3_Music_Generation/) | Python, TensorFlow, Keras LSTM, music21, Flask | ✅ Completed | [View Task 3 Guide](Task3_Music_Generation/README.md) |
+| **Task 4** | [Real-Time Object Detection & Tracking](Task4_Object_Detection/) | Python, OpenCV, Ultralytics YOLOv8, BoT-SORT, Flask | ✅ Completed | [View Task 4 Guide](Task4_Object_Detection/README.md) |
+
+---
+
+## 🚀 Detailed Tasks Overview
+
+### Task 1: Language Translation Tool (Fluent)
+A sleek, responsive translation workspace built using Vanilla HTML5, CSS3, and JavaScript.
+- **Features**: Real-time multi-language translation, bi-directional language swapping, instant clipboard copy with toast notifications, live 500-char limiter, and keyboard shortcuts (`Cmd/Ctrl + Enter`).
+- **UI**: Frosted glass bento-grid layout with Apple-style typography and dark blur backdrop.
 
 ### Task 2: AI FAQ Chatbot
-A smart NLP-based FAQ Chatbot capable of matching user questions to the most relevant answers.
-- **Features:** Uses Natural Language Processing (NLP) to tokenize, lemmatize, and find the highest cosine similarity (TF-IDF) between the user's input and a pre-defined `faq_data.json` database. If the chatbot doesn't know the answer, it automatically falls back to searching Wikipedia to answer any general knowledge question!
-- **UI:** Designed exactly like an iMessage chat window on a Mac.
-- **Tech Stack:** Python, Flask, NLTK, Scikit-Learn, Wikipedia API.
+An intelligent NLP chatbot matching customer inquiries against a knowledge base.
+- **Features**: WordNet lemmatization, TF-IDF vectorization, cosine similarity ranking, fallback recommendations, and automated unit test suite.
+- **UI**: Authentic macOS iMessage window with traffic lights, typing animation indicators, and quick-prompt chips.
 
 ### Task 3: Music Generation with AI
-A Deep Learning pipeline that trains a neural network to compose its own music.
-- **Features:** Parses classical sheet music (Bach) using `music21`, structures the sequences, and trains a 2-layer Long Short-Term Memory (LSTM) Recurrent Neural Network using Keras. It predicts new notes and outputs a brand new `.mid` (MIDI) music file.
-- **UI:** A Flask web server that provides a clean UI for downloading the AI-generated music.
-- **Tech Stack:** Python, TensorFlow, Keras, music21, Flask.
+A deep learning sequence model generating original musical compositions.
+- **Features**: MIDI / Bach chorales tokenization via `music21`, 2-layer stacked LSTM neural network with Dropout, and temperature sampling.
+- **UI**: Web dashboard with live `@magenta/music` web MIDI playback, staff sheet notation visualizer, and track download.
 
 ### Task 4: Real-time Object Detection and Tracking
-A real-time computer vision server that tracks objects using your webcam.
-- **Features:** Uses the state-of-the-art **YOLOv8** (Medium) object detection model combined with the **BoT-SORT** tracking algorithm. It streams the webcam feed (`cv2.VideoCapture`), detects objects (like people, phones, cups) with a strict confidence threshold (0.8), draws bounding boxes, and assigns permanent tracking IDs to objects across frames.
-- **UI:** Streams the annotated video frames to a beautiful Mac-themed web dashboard using Flask MJPEG streaming.
-- **Tech Stack:** Python, OpenCV, Ultralytics (YOLOv8), PyTorch, Flask.
+A real-time computer vision server streaming annotated video frames over HTTP.
+- **Features**: SOTA **YOLOv8** object detection paired with **BoT-SORT** persistent multi-object tracking, confidence thresholding (`conf=0.8`), and automatic camera fallback to bundled sample video.
+- **UI**: macOS dark window streaming MJPEG frames in real time.
 
 ---
 
-## 🛠️ How to Run
+## 🛠️ Quickstart
 
-### Task 1:
-Simply open `Task1_Language_Translation_Tool/index.html` in your web browser.
+### Global Dependencies
+Install dependencies across all Python tasks:
+```bash
+pip install -r requirements.txt
+```
 
-### Task 2:
+### Running Individual Tasks
+
+#### Task 1:
+```bash
+# Open directly in your browser:
+open Task1_Language_Translation_Tool/index.html
+```
+
+#### Task 2:
 ```bash
 cd Task2_FAQ_Chatbot
-source venv/bin/activate
+pip install -r requirements.txt
 python3 app.py
-# Open http://127.0.0.1:5000 in your browser
+# Server running at: http://127.0.0.1:5000
 ```
 
-### Task 3:
+#### Task 3:
 ```bash
 cd Task3_Music_Generation
-source venv/bin/activate
-# To train the AI and generate new music:
-python3 music_generator.py 
-# To start the download server:
+pip install -r requirements.txt
+python3 music_generator.py train --epochs 10   # Optional: re-train model
 python3 app.py
-# Open http://127.0.0.1:5001 in your browser
+# Server running at: http://127.0.0.1:5001
 ```
 
-### Task 4:
+#### Task 4:
 ```bash
 cd Task4_Object_Detection
-source venv/bin/activate
+pip install -r requirements.txt
 python3 app.py
-# Open http://127.0.0.1:5002 in your browser
+# Server running at: http://127.0.0.1:5002
 ```
 
 ---
-*Developed during the CodeAlpha Internship.*
+
+## 🧪 Testing
+
+Run the automated test suite:
+```bash
+python3 Task2_FAQ_Chatbot/test_chatbot.py
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📄 License
+
+This repository is distributed under the MIT License. See [LICENSE](LICENSE) for details.
