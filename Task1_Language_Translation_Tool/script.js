@@ -42,12 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Copy to Clipboard
+    const toast = document.getElementById('toast');
+    const showToast = (message = 'Text copied to clipboard!') => {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.remove('hide');
+        setTimeout(() => {
+            toast.classList.add('hide');
+        }, 2200);
+    };
+
     copyBtn.addEventListener('click', () => {
         if (!outputText.value) return;
         navigator.clipboard.writeText(outputText.value).then(() => {
             const icon = copyBtn.querySelector('i');
             icon.className = 'fa-solid fa-check';
             icon.style.color = '#10B981';
+            showToast();
             
             setTimeout(() => {
                 icon.className = 'fa-regular fa-copy';

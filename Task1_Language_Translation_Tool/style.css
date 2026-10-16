@@ -267,3 +267,27 @@ textarea::placeholder {
     textarea { min-height: 150px; font-size: 1.4rem; }
     .bento-header { flex-direction: column; text-align: center; gap: 0.5rem; padding: 1.5rem !important; }
 }
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 185, 129, 0.9);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 10px);
+}
